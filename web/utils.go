@@ -2,7 +2,8 @@ package web
 
 import (
 	"math"
-
+	"strings"
+	
 	"github.com/dustin/go-humanize"
 	"github.com/evepraisal/go-evepraisal"
 	"github.com/leekchan/accounting"
