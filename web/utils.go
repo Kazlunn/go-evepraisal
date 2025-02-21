@@ -47,13 +47,21 @@ func humanizeCommaf(f float64) string {
 
 func humanizeVolume(f float64) string {
 	if float64(int64(f)) != f {
-		return humanize.Commaf(f)
+		return truncateAfterDot(humanize.Commaf(f))
 	}
 	val, err := stats.Round(f, 0)
 	if err != nil {
-		return humanize.Commaf(f)
+		return truncateAfterDot(humanize.Commaf(f))
 	}
-	return humanize.Commaf(val)
+	return truncateAfterDot(humanize.Commaf(f))
+}
+
+func truncateAfterDot(s string) string {
+	dotIndex := strings.Index(s, ".")
+	if dotIndex == -1 || dotIndex+3 > len(s) {
+		return s
+	}
+	return s[:dotIndex+3]
 }
 
 func cleanAppraisal(appraisal *evepraisal.Appraisal) *evepraisal.Appraisal {
