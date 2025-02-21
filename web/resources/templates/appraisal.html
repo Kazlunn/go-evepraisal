@@ -135,12 +135,10 @@
         <tr class="{{if eq $item.TypeID 0}}table-danger{{else if eq $item.Prices.All.Volume 0}}table-info{{else if $item.Extra.BPC}}table-info{{end}}">
           <td class="numeric-cell text-center align-middle" data-sort-value="-{{$item.Quantity}}">{{comma $item.Quantity}}</td>
           <td class="align-middle">
-            {{if (and $item.TypeName (lt $i 30))}}
             <a href="/item/{{$item.TypeID}}">
               <img class="float-left media-object" src="https://images.evetech.net/types/{{$item.TypeID}}/icon" alt="{{$item.TypeName}}">
             </a>
             &nbsp;
-            {{end}}
             <a href="/item/{{$item.TypeID}}" class="text-light">
               <strong>{{if $item.TypeName}}{{$item.TypeName}}{{else}}{{$item.Name}}{{end}}{{if $item.Extra.BPC}} (Copy)</a>
               <span class="badge badge-primary">Runs: {{$item.Extra.BPCRuns}}</span>{{else}}</a>{{end}}
